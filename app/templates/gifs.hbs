@@ -1,0 +1,5 @@
+{{gif-search searchGifs="searchGifs"}}
+{{#each model.data as |gif|}}
+  <img src={{gif.images.original.url}}>
+{{/each}}
+{{outlet}}
