@@ -8,17 +8,13 @@ moduleForComponent('gif-search', 'Integration | Component | gif search', {
 test('it renders', function(assert) {
   // Set any properties with this.set('myProperty', 'value');
   // Handle any actions with this.on('myAction', function(val) { ... });
+  this.on('stubSearchGifs', function(query){
+    assert.equal(query, "garfield");
+  });
 
-  this.render(hbs`{{gif-search}}`);
+  this.render(hbs`{{gif-search searchGifs='stubSearchGifs'}}`);
+  this.$('input').val('garfield');
+  this.$('input').change();
+  this.$('button').click();
 
-  assert.equal(this.$().text().trim(), '');
-
-  // Template block usage:
-  this.render(hbs`
-    {{#gif-search}}
-      template block text
-    {{/gif-search}}
-  `);
-
-  assert.equal(this.$().text().trim(), 'template block text');
 });
