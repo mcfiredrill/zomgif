@@ -9,7 +9,8 @@ test('visiting /', function(assert) {
   andThen(function() {
     assert.equal(currentURL(), '/');
     fillIn("input.search-gifs", "garfield");
+    triggerEvent("input.search-gifs", "keydown", { keyCode: 13 });
     let gif = find("img");
-    assert.equal(gif.length, 1);
+    assert.equal(gif.length, 25);
   });
 });
